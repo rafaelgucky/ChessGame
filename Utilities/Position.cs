@@ -10,15 +10,27 @@ namespace ChessGame.Utilities
 	{
         public int X { get; set; }
         public int Y { get; set; }
+        public bool Ocuped { get; set; }
         public Position() { }
         public Position(int axeX, int axeY)
         {
             X = axeX;
             Y = axeY;
+            Ocuped = true;
         }
+		public Position(int axeX, int axeY, bool ocuped)
+		{
+			X = axeX;
+			Y = axeY;
+			Ocuped = ocuped;
+		}
 
-        /*
-         Line 2
+		/*
+        
+         X == Linha
+         Y == Coluna
+
+        Line 2
         Colunm 3
 
         Position 19
@@ -35,5 +47,5 @@ namespace ChessGame.Utilities
         56 57 58 59 60 61 62 63   7
 
          */
-    }
+	}
 }

@@ -18,20 +18,26 @@ namespace ChessGame
 	{
 		static void Main(string[] args)
 		{
-			//Board deve ser abstract
-
 			Board board = new Board(8, 8);
 
-			Piece piece = new Piece(new Position(3, 3), Color.White);
+			Screen.Print(board);;
 
-			board.AddPiece(piece);
+			for(int i = 0; i < 8; i++)
+			{
+				board.AddPiece(new Pawn(board.Positions[1, i], Color.White, "P"));
+				board.AddPiece(new Pawn(board.Positions[6, i], Color.Black, "P"));
+			}
 
-			board.AddPiece(new Piece(new Position(4, 4), Color.Black));
+			Pawn pawn = new Pawn(board.Positions[2, 4], Color.Black, "T");
+			board.AddPiece(pawn);
 
-			Screen.Print(board);
+			List<Position> positions = new List<Position>(pawn.GetMove(board));
 
-			board.RemovePiece(piece);
-
+			foreach (Position position in positions) 
+			{
+				Console.WriteLine(position.X + ", " + position.Y);
+			}
+			
 			Console.WriteLine();
 
 

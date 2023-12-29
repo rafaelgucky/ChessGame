@@ -19,13 +19,14 @@ namespace ChessGame.BoardFiles
 			{
 				for(int y = 0; y < board.Height; y++)
 				{
-					if (board.Pieces[i, y] == null)
+					if (board.Positions[i, y].Ocuped)
 					{
-						Console.Write("|-|");
+						Console.Write($"|{board.Pieces[i, y].Symbol}|");
 					}
 					else
 					{
-						Console.Write("|P|");
+						//Console.Write("|P|");
+						Console.Write("|-|");
 					}
 				}
 				Console.WriteLine();
