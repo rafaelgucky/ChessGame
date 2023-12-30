@@ -15,7 +15,7 @@ namespace ChessGame.Pieces
 		{
 		}
 
-		public override List<Position> GetMove(Board board)
+		public override List<Position> GetMove(Board board, bool onlyVerication = false)
 		{
 			List<Position> positions = new List<Position>();
 
@@ -29,14 +29,15 @@ namespace ChessGame.Pieces
 					if (!board.Positions[Position.X + x[i], Position.Y + y[i]].Ocuped)
 					{
 						positions.Add(new Position(Position.X + x[i], Position.Y + y[i]));
-						board.Positions[Position.X + x[i], Position.Y + y[i]].IsPossiblePlace = true;
+						if (!onlyVerication) { board.Positions[Position.X + x[i], Position.Y + y[i]].IsPossiblePlace = true; }
+						
 					}
 					else
 					{
 						if (board.Pieces[Position.X + x[i], Position.Y + y[i]].Color != Color)
 						{
 							positions.Add(new Position(Position.X + x[i], Position.Y + y[i]));
-							board.Positions[Position.X + x[i], Position.Y + y[i]].Killer = true;
+							if (!onlyVerication) { board.Positions[Position.X + x[i], Position.Y + y[i]].Killer = true; }
 						}
 					}
 				}

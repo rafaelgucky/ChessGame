@@ -14,7 +14,7 @@ namespace ChessGame.Pieces
 		public Bishop(Position position, Color color, Board board, string symbol) : base(position, color, board, symbol)
 		{
 		}
-		public override List<Position> GetMove(Board board)
+		public override List<Position> GetMove(Board board, bool onlyVerication = false)
 		{
 			List<Position> positions = new List<Position>();
 	
@@ -25,14 +25,14 @@ namespace ChessGame.Pieces
 				if (!board.Positions[Position.X + x, Position.Y + x].Ocuped)
 				{
 					positions.Add(new Position(Position.X + x, Position.Y + x));
-					board.Positions[Position.X + x, Position.Y + x].IsPossiblePlace = true;
+					if (!onlyVerication) { board.Positions[Position.X + x, Position.Y + x].IsPossiblePlace = true; }
 				}
 				else
 				{
 					if (board.Pieces[Position.X + x, Position.Y + x].Color != Color)
 					{
 						positions.Add(new Position(Position.X + x, Position.Y + x));
-						board.Positions[Position.X + x, Position.Y + x].Killer = true;
+						if (!onlyVerication) { board.Positions[Position.X + x, Position.Y + x].Killer = true; }
 					}
 					break;
 				}
@@ -46,14 +46,14 @@ namespace ChessGame.Pieces
 				if (!board.Positions[Position.X - x, Position.Y - x].Ocuped)
 				{
 					positions.Add(new Position(Position.X - x, Position.Y - x));
-					board.Positions[Position.X - x, Position.Y - x].IsPossiblePlace = true;
+					if (!onlyVerication) { board.Positions[Position.X - x, Position.Y - x].IsPossiblePlace = true; }
 				}
 				else
 				{
 					if (board.Pieces[Position.X - x, Position.Y - x].Color != Color)
 					{
 						positions.Add(new Position(Position.X - x, Position.Y - x));
-						board.Positions[Position.X - x, Position.Y - x].Killer = true;
+						if (!onlyVerication) { board.Positions[Position.X - x, Position.Y - x].Killer = true; }
 					}
 					break;
 				}
@@ -67,14 +67,14 @@ namespace ChessGame.Pieces
 				if (!board.Positions[Position.X - x, Position.Y + x].Ocuped)
 				{
 					positions.Add(new Position(Position.X - x, Position.Y + x));
-					board.Positions[Position.X - x, Position.Y + x].IsPossiblePlace = true;
+					if (!onlyVerication) { board.Positions[Position.X - x, Position.Y + x].IsPossiblePlace = true; }	
 				}
 				else
 				{
 					if (board.Pieces[Position.X - x, Position.Y + x].Color != Color)
 					{
 						positions.Add(new Position(Position.X - x, Position.Y + x));
-						board.Positions[Position.X - x, Position.Y + x].Killer = true;
+						if (!onlyVerication) { board.Positions[Position.X - x, Position.Y + x].Killer = true; }
 					}
 					break;
 				}
@@ -88,14 +88,14 @@ namespace ChessGame.Pieces
 				if (!board.Positions[Position.X + x, Position.Y - x].Ocuped)
 				{
 					positions.Add(new Position(Position.X + x, Position.Y - x));
-					board.Positions[Position.X + x, Position.Y - x].IsPossiblePlace = true;
+					if (!onlyVerication) { board.Positions[Position.X + x, Position.Y - x].IsPossiblePlace = true; }
 				}
 				else
 				{
 					if (board.Pieces[Position.X + x, Position.Y - x].Color != Color)
 					{
 						positions.Add(new Position(Position.X + x, Position.Y - x));
-						board.Positions[Position.X + x, Position.Y - x].Killer = true;
+						if(!onlyVerication) { board.Positions[Position.X + x, Position.Y - x].Killer = true; }
 					}
 					break;
 				}

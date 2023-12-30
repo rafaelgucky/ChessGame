@@ -12,9 +12,11 @@ namespace ChessGame.Pieces
 {
     abstract class Piece
     {
-        public Position Position { get; set; }
-        public Color Color { get; set; }
         public string Symbol {  get; set; }
+		public int Moves { get; set; }
+		public Position Position { get; set; }
+        public Color Color { get; set; }
+		public List<Piece> CapturedPieces { get; set; } = new List<Piece>();
 
 
         public Piece(Position position, Color color,Board board, string symbol)
@@ -24,33 +26,45 @@ namespace ChessGame.Pieces
             Color = color;
             Symbol = symbol;
         }
-        public abstract List<Position> GetMove(Board board);
+        public abstract List<Position> GetMove(Board board, bool onlyVerification = false);
 
         public void Move(List<Position> listPositions, Position position, Board board)
         {
+			foreach (Position position2 in board.Positions)
+			{
+				position2.Killer = false;
+				position2.IsPossiblePlace = false;
+			}
+
 			foreach (Position positionTemp in listPositions)
 			{
 				if (positionTemp.Y == position.Y && positionTemp.X == position.X)
 				{
+					Moves++;
+
 					board.Positions[Position.X, Position.Y].Ocuped = false;
 					board.Positions[position.X, position.Y].Ocuped = true;
-
-					foreach (Position position1 in listPositions)
-					{
-						board.Positions[position1.X, position1.Y].IsPossiblePlace = false;
-						board.Positions[position1.X, position1.Y].Killer = false;
-					}
 
 					board.Pieces[Position.X, Position.Y] = null;
 					if(board.Pieces[position.X, position.Y] != null)
 					{
-						//Captured piece
+						CapturedPieces.Add(board.Pieces[position.X, position.Y]);
 					}
 					board.Pieces[position.X, position.Y] = this;
 
 					Position = position;
 				}
 			}
+		}
+		public List<Piece> GetCapturesPieces()
+		{
+			List<Piece> pieces = new List<Piece>();
+
+			foreach(Piece piece in CapturedPieces)
+			{
+				pieces.Add(piece);
+			}
+			return pieces;
 		}
     }
 }

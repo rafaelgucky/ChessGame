@@ -12,41 +12,36 @@ namespace ChessGame
 		static void Main(string[] args)
 		{
 			Board board = new Board(8, 8);
+			Manager manager = new Manager(board);
+			King king = null;
 
-			for(int i = 0; i < 8; i++)
+			List<Piece> listPieceWhite;
+			List<Piece> listPieceBlack;
+
+			while(!manager.Ended)
 			{
-				board.AddPiece(new Pawn(new Position(1, i), Color.Black, board, "P"));
-				board.AddPiece(new Pawn(new Position(6, i), Color.White, board, "P"));
-
-			}
-			board.AddPiece(new Bishop(new Position(0, 2), Color.Black, board, "B"));
-			board.AddPiece(new Bishop(new Position(0, 5), Color.Black, board, "B"));
-
-			board.AddPiece(new Bishop(new Position(7, 2), Color.White, board, "B"));
-			board.AddPiece(new Bishop(new Position(7, 5), Color.White, board, "B"));
-
-			board.AddPiece(new Tower(new Position(0, 0), Color.Black, board, "T"));
-			board.AddPiece(new Tower(new Position(0, 7), Color.Black, board, "T"));
-
-			board.AddPiece(new Tower(new Position(7, 0), Color.White, board, "T"));
-			board.AddPiece(new Tower(new Position(7, 7), Color.White, board, "T"));
-
-			board.AddPiece(new Horse(new Position(0, 1), Color.Black, board, "C"));
-			board.AddPiece(new Horse(new Position(0, 6), Color.Black, board, "C"));
-
-			board.AddPiece(new Horse(new Position(7, 1), Color.White, board, "C"));
-			board.AddPiece(new Horse(new Position(7, 6), Color.White, board, "C"));
-
-
-			int temp = 0;
-
-			while(temp < 5)
-			{
+				listPieceWhite = new List<Piece>();
+				listPieceBlack = new List<Piece>();
 
 				Screen.Print(board);
 
-				List<Position> positions;
+				if(listPieceWhite.Count > 0 || listPieceBlack.Count > 0)
+				{
+					Console.Write("White captured pieces: ");
+					foreach(Piece piece in listPieceWhite)
+					{
+						Console.Write(piece.Symbol + " ");
+					}
+					Console.WriteLine();
+					Console.Write("Black captured pieces: ");
+					foreach (Piece piece in listPieceBlack)
+					{
+						Console.Write(piece.Symbol + " ");
+					}
+				}
 
+				List<Position> positions;
+				Console.WriteLine();
 				Console.Write("Select one piece to move: ");
 
 				Position pos = Position.Convert(Console.ReadLine());
@@ -61,8 +56,29 @@ namespace ChessGame
 
 				Console.WriteLine();
 
-				temp++;
+				foreach(Piece piece in board.Pieces)
+				{
+					if (piece != null)
+					{ 
+						if (piece.Color == Color.White)
+						{
+							listPieceWhite.AddRange(piece.GetCapturesPieces());
+						}
+						else
+						{
+							listPieceBlack.AddRange(piece.GetCapturesPieces());
+						}
+					}
+				}
+
+				king = manager.XequeMateVerification();
+				Console.ReadLine();
 			}
+
+			Screen.Print(board);
+
+			if(king.Color == Color.White) { Console.WriteLine("Victory of White"); }
+			else { Console.WriteLine("Victory of Black"); }
 
 		}
 	}
