@@ -1,0 +1,319 @@
+[33mcommit 2545f9937ce11a4e0248888f6e68f0fcf45ea2b7[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: rafaelgucky <rafaelgucky97@gmail.com>
+Date:   Thu Dec 28 22:34:17 2023 -0300
+
+    Second day. Some pieces and the pawn's method "GetMove" was builded
+
+[1mdiff --git a/.vs/ChessGame/DesignTimeBuild/.dtbcache.v2 b/.vs/ChessGame/DesignTimeBuild/.dtbcache.v2[m
+[1mindex 07e59a0..cbc149b 100644[m
+Binary files a/.vs/ChessGame/DesignTimeBuild/.dtbcache.v2 and b/.vs/ChessGame/DesignTimeBuild/.dtbcache.v2 differ
+[1mdiff --git a/.vs/ChessGame/FileContentIndex/14542695-e29f-40be-88ef-dfec74aca500.vsidx b/.vs/ChessGame/FileContentIndex/14542695-e29f-40be-88ef-dfec74aca500.vsidx[m
+[1mdeleted file mode 100644[m
+[1mindex 50c33b5..0000000[m
+Binary files a/.vs/ChessGame/FileContentIndex/14542695-e29f-40be-88ef-dfec74aca500.vsidx and /dev/null differ
+[1mdiff --git a/.vs/ChessGame/FileContentIndex/1dbf6b50-345e-4ed1-a79e-d13cdd08912a.vsidx b/.vs/ChessGame/FileContentIndex/1dbf6b50-345e-4ed1-a79e-d13cdd08912a.vsidx[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3ef926f[m
+Binary files /dev/null and b/.vs/ChessGame/FileContentIndex/1dbf6b50-345e-4ed1-a79e-d13cdd08912a.vsidx differ
+[1mdiff --git a/.vs/ChessGame/FileContentIndex/1dd71b64-aa2c-4239-8eba-48cd08d7066d.vsidx b/.vs/ChessGame/FileContentIndex/1dd71b64-aa2c-4239-8eba-48cd08d7066d.vsidx[m
+[1mnew file mode 100644[m
+[1mindex 0000000..ef946a6[m
+Binary files /dev/null and b/.vs/ChessGame/FileContentIndex/1dd71b64-aa2c-4239-8eba-48cd08d7066d.vsidx differ
+[1mdiff --git a/.vs/ChessGame/FileContentIndex/2ddd8f61-3a6e-4174-b252-02566401c021.vsidx b/.vs/ChessGame/FileContentIndex/2ddd8f61-3a6e-4174-b252-02566401c021.vsidx[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6590c0d[m
+Binary files /dev/null and b/.vs/ChessGame/FileContentIndex/2ddd8f61-3a6e-4174-b252-02566401c021.vsidx differ
+[1mdiff --git a/.vs/ChessGame/FileContentIndex/30f6d8f4-cb8b-4ab7-807a-35ae0b04799a.vsidx b/.vs/ChessGame/FileContentIndex/30f6d8f4-cb8b-4ab7-807a-35ae0b04799a.vsidx[m
+[1mdeleted file mode 100644[m
+[1mindex aa8eeae..0000000[m
+Binary files a/.vs/ChessGame/FileContentIndex/30f6d8f4-cb8b-4ab7-807a-35ae0b04799a.vsidx and /dev/null differ
+[1mdiff --git a/.vs/ChessGame/FileContentIndex/50c0d7fb-aab1-4a49-b089-ead94d5869c1.vsidx b/.vs/ChessGame/FileContentIndex/50c0d7fb-aab1-4a49-b089-ead94d5869c1.vsidx[m
+[1mdeleted file mode 100644[m
+[1mindex c7ba07f..0000000[m
+Binary files a/.vs/ChessGame/FileContentIndex/50c0d7fb-aab1-4a49-b089-ead94d5869c1.vsidx and /dev/null differ
+[1mdiff --git a/.vs/ChessGame/FileContentIndex/6813cb07-0cf9-4794-b1a4-2e6a5ea4fb81.vsidx b/.vs/ChessGame/FileContentIndex/6813cb07-0cf9-4794-b1a4-2e6a5ea4fb81.vsidx[m
+[1mdeleted file mode 100644[m
+[1mindex 1b5a8af..0000000[m
+Binary files a/.vs/ChessGame/FileContentIndex/6813cb07-0cf9-4794-b1a4-2e6a5ea4fb81.vsidx and /dev/null differ
+[1mdiff --git a/.vs/ChessGame/FileContentIndex/7a662442-85d7-4008-9188-83f3752f180e.vsidx b/.vs/ChessGame/FileContentIndex/7a662442-85d7-4008-9188-83f3752f180e.vsidx[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c8bbafa[m
+Binary files /dev/null and b/.vs/ChessGame/FileContentIndex/7a662442-85d7-4008-9188-83f3752f180e.vsidx differ
+[1mdiff --git a/.vs/ChessGame/FileContentIndex/c1fbf500-5634-42f8-bf2b-0101a5ebb43b.vsidx b/.vs/ChessGame/FileContentIndex/c1fbf500-5634-42f8-bf2b-0101a5ebb43b.vsidx[m
+[1mdeleted file mode 100644[m
+[1mindex 3f91e71..0000000[m
+Binary files a/.vs/ChessGame/FileContentIndex/c1fbf500-5634-42f8-bf2b-0101a5ebb43b.vsidx and /dev/null differ
+[1mdiff --git a/.vs/ChessGame/FileContentIndex/d8840434-385c-4402-a6c4-2aaf9e985c8d.vsidx b/.vs/ChessGame/FileContentIndex/d8840434-385c-4402-a6c4-2aaf9e985c8d.vsidx[m
+[1mnew file mode 100644[m
+[1mindex 0000000..cffffac[m
+Binary files /dev/null and b/.vs/ChessGame/FileContentIndex/d8840434-385c-4402-a6c4-2aaf9e985c8d.vsidx differ
+[1mdiff --git a/.vs/ChessGame/v17/.futdcache.v2 b/.vs/ChessGame/v17/.futdcache.v2[m
+[1mindex 500f07e..73a7ea1 100644[m
+Binary files a/.vs/ChessGame/v17/.futdcache.v2 and b/.vs/ChessGame/v17/.futdcache.v2 differ
+[1mdiff --git a/.vs/ChessGame/v17/.suo b/.vs/ChessGame/v17/.suo[m
+[1mindex 400e163..a96e7e1 100644[m
+Binary files a/.vs/ChessGame/v17/.suo and b/.vs/ChessGame/v17/.suo differ
+[1mdiff --git a/.vs/ProjectEvaluation/chessgame.metadata.v7.bin b/.vs/ProjectEvaluation/chessgame.metadata.v7.bin[m
+[1mindex e03c831..c9ed188 100644[m
+Binary files a/.vs/ProjectEvaluation/chessgame.metadata.v7.bin and b/.vs/ProjectEvaluation/chessgame.metadata.v7.bin differ
+[1mdiff --git a/.vs/ProjectEvaluation/chessgame.projects.v7.bin b/.vs/ProjectEvaluation/chessgame.projects.v7.bin[m
+[1mindex 7b13b31..51d64ed 100644[m
+Binary files a/.vs/ProjectEvaluation/chessgame.projects.v7.bin and b/.vs/ProjectEvaluation/chessgame.projects.v7.bin differ
+[1mdiff --git a/BoardFiles/Board.cs b/BoardFiles/Board.cs[m
+[1mindex fbcc26f..1aace3a 100644[m
+[1m--- a/BoardFiles/Board.cs[m
+[1m+++ b/BoardFiles/Board.cs[m
+[36m@@ -14,21 +14,32 @@[m [mnamespace ChessGame.BoardFiles[m
+ 		public int Width {  get; set; }[m
+ 		public int Height { get; set; }[m
+ 		public Piece[,] Pieces { get; set; }[m
+[32m+[m		[32mpublic Position[,] Positions { get; set; }[m
+ [m
+ 		public Board(int width, int height)[m
+ 		{[m
+ 			Width = width;[m
+ 			Height = height;[m
+[31m-			Pieces = new Piece[Width, Height];[m
+[32m+[m			[32mPieces = new Piece[Width , Height];[m
+[32m+[m			[32mPositions = new Position[Width, Height];[m
+[32m+[m
+[32m+[m			[32mfor(int i = 0; i < Width; i++)[m
+[32m+[m			[32m{[m
+[32m+[m				[32mfor(int y = 0; y < Height; y++)[m
+[32m+[m				[32m{[m
+[32m+[m					[32mPositions[i, y] = new Position(i, y, false);[m
+[32m+[m				[32m}[m
+[32m+[m			[32m}[m
+ 		}[m
+ [m
+ 		public void AddPiece(Piece piece)[m
+ 		{[m
+[31m-			Pieces[piece.Position.X, piece.Position.Y] = piece;[m
+[32m+[m			[32mPieces[piece.Position.X , piece.Position.Y] = piece;[m
+[32m+[m			[32mPositions[piece.Position.X, piece.Position.Y].Ocuped = true;[m
+ 		}[m
+ 		public void RemovePiece(Piece piece)[m
+ 		{[m
+[31m-			Pieces[piece.Position.X, piece.Position.Y] = null;[m
+[32m+[m			[32mPieces[piece.Position.X , piece.Position.Y] = null;[m
+ 		}[m
+ 		public List<Position> UsedPlaces()[m
+ 		{[m
+[1mdiff --git a/BoardFiles/Screen.cs b/BoardFiles/Screen.cs[m
+[1mindex 596545e..48d268c 100644[m
+[1m--- a/BoardFiles/Screen.cs[m
+[1m+++ b/BoardFiles/Screen.cs[m
+[36m@@ -19,13 +19,14 @@[m [mnamespace ChessGame.BoardFiles[m
+ 			{[m
+ 				for(int y = 0; y < board.Height; y++)[m
+ 				{[m
+[31m-					if (board.Pieces[i, y] == null)[m
+[32m+[m					[32mif (board.Positions[i, y].Ocuped)[m
+ 					{[m
+[31m-						Console.Write("|-|");[m
+[32m+[m						[32mConsole.Write($"|{board.Pieces[i, y].Symbol}|");[m
+ 					}[m
+ 					else[m
+ 					{[m
+[31m-						Console.Write("|P|");[m
+[32m+[m						[32m//Console.Write("|P|");[m
+[32m+[m						[32mConsole.Write("|-|");[m
+ 					}[m
+ 				}[m
+ 				Console.WriteLine();[m
+[1mdiff --git a/Pieces/Pawn.cs b/Pieces/Pawn.cs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0dcf692[m
+[1m--- /dev/null[m
+[1m+++ b/Pieces/Pawn.cs[m
+[36m@@ -0,0 +1,52 @@[m
+[32m+[m[32m﻿using ChessGame.BoardFiles;[m
+[32m+[m[32musing ChessGame.Enums;[m
+[32m+[m[32musing ChessGame.Utilities;[m
+[32m+[m[32musing System;[m
+[32m+[m[32musing System.Collections.Generic;[m
+[32m+[m[32musing System.Linq;[m
+[32m+[m[32musing System.Text;[m
+[32m+[m[32musing System.Threading.Tasks;[m
+[32m+[m
+[32m+[m[32mnamespace ChessGame.Pieces[m
+[32m+[m[32m{[m
+[32m+[m	[32mclass Pawn : Piece[m
+[32m+[m	[32m{[m
+[32m+[m[32m        public Pawn(Position position, Color color, string symbol) : base(position, color, symbol)[m
+[32m+[m		[32m{[m
+[32m+[m[41m			[m
+[32m+[m		[32m}[m
+[32m+[m
+[32m+[m		[32mpublic override List<Position> GetMove(Board board)[m
+[32m+[m		[32m{[m
+[32m+[m			[32mList<Position> positions = new List<Position>();[m
+[32m+[m
+[32m+[m
+[32m+[m			[32mforeach(Position position in board.Positions)[m
+[32m+[m			[32m{[m
+[32m+[m				[32mif (!position.Ocuped)[m
+[32m+[m				[32m{[m
+[32m+[m					[32mif(Color == Color.White)[m
+[32m+[m					[32m{[m
+[32m+[m						[32mif(position.Y == Position.Y && position.X < Position.X && position.X >= Position.X - 2)[m
+[32m+[m						[32m{[m
+[32m+[m							[32mpositions.Add(position);[m
+[32m+[m						[32m}[m
+[32m+[m					[32m}[m
+[32m+[m					[32melse[m
+[32m+[m					[32m{[m
+[32m+[m						[32mif (position.Y == Position.Y && position.X > Position.X && position.X <= Position.X + 2)[m
+[32m+[m						[32m{[m
+[32m+[m							[32mpositions.Add(position);[m
+[32m+[m						[32m}[m
+[32m+[m					[32m}[m
+[32m+[m				[32m}[m
+[32m+[m
+[32m+[m			[32m}[m
+[32m+[m			[32mreturn positions;[m
+[32m+[m		[32m}[m
+[32m+[m		[32mpublic override void Move(Position position)[m
+[32m+[m		[32m{[m
+[32m+[m[41m			[m
+[32m+[m		[32m}[m
+[32m+[m	[32m}[m
+[32m+[m[32m}[m
+[1mdiff --git a/Pieces/Piece.cs b/Pieces/Piece.cs[m
+[1mindex c1202e9..b677dfc 100644[m
+[1m--- a/Pieces/Piece.cs[m
+[1m+++ b/Pieces/Piece.cs[m
+[36m@@ -6,20 +6,25 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using ChessGame.Utilities;[m
+ using ChessGame.Enums;[m
+[32m+[m[32musing ChessGame.BoardFiles;[m
+ [m
+ namespace ChessGame.Pieces[m
+ {[m
+[31m-    class Piece[m
+[32m+[m[32m    abstract class Piece[m
+     {[m
+         public Position Position { get; set; }[m
+         public Color Color { get; set; }[m
+[32m+[m[32m        public string Symbol {  get; set; }[m
+ [m
+ [m
+[31m-        public Piece(Position position, Color color)[m
+[32m+[m[32m        public Piece(Position position, Color color, string symbol)[m
+         {[m
+[32m+[m[32m            position.Ocuped = true;[m
+             Position = position;[m
+             Color = color;[m
+[32m+[m[32m            Symbol = symbol;[m
+         }[m
+[31m-        //public abstract  GetMove()[m
+[32m+[m[32m        public abstract List<Position> GetMove(Board board);[m
+[32m+[m[32m        public abstract void Move(Position position);[m
+     }[m
+ }[m
+[1mdiff --git a/Program.cs b/Program.cs[m
+[1mindex 6699a68..ddda9cf 100644[m
+[1m--- a/Program.cs[m
+[1m+++ b/Program.cs[m
+[36m@@ -18,20 +18,26 @@[m [mnamespace ChessGame[m
+ 	{[m
+ 		static void Main(string[] args)[m
+ 		{[m
+[31m-			//Board deve ser abstract[m
+[31m-[m
+ 			Board board = new Board(8, 8);[m
+ [m
+[31m-			Piece piece = new Piece(new Position(3, 3), Color.White);[m
+[31m-[m
+[31m-			board.AddPiece(piece);[m
+[32m+[m			[32mScreen.Print(board);;[m
+ [m
+[31m-			board.AddPiece(new Piece(new Position(4, 4), Color.Black));[m
+[32m+[m			[32mfor(int i = 0; i < 8; i++)[m
+[32m+[m			[32m{[m
+[32m+[m				[32mboard.AddPiece(new Pawn(board.Positions[1, i], Color.White, "P"));[m
+[32m+[m				[32mboard.AddPiece(new Pawn(board.Positions[6, i], Color.Black, "P"));[m
+[32m+[m			[32m}[m
+ [m
+[31m-			Screen.Print(board);[m
+[32m+[m			[32mPawn pawn = new Pawn(board.Positions[2, 4], Color.Black, "T");[m
+[32m+[m			[32mboard.AddPiece(pawn);[m
+ [m
+[31m-			board.RemovePiece(piece);[m
+[32m+[m			[32mList<Position> positions = new List<Position>(pawn.GetMove(board));[m
+ [m
+[32m+[m			[32mforeach (Position position in positions)[m[41m [m
+[32m+[m			[32m{[m
+[32m+[m				[32mConsole.WriteLine(position.X + ", " + position.Y);[m
+[32m+[m			[32m}[m
+[32m+[m[41m			[m
+ 			Console.WriteLine();[m
+ [m
+ [m
+[1mdiff --git a/Utilities/Position.cs b/Utilities/Position.cs[m
+[1mindex a335836..954b9ec 100644[m
+[1m--- a/Utilities/Position.cs[m
+[1m+++ b/Utilities/Position.cs[m
+[36m@@ -10,15 +10,27 @@[m [mnamespace ChessGame.Utilities[m
+ 	{[m
+         public int X { get; set; }[m
+         public int Y { get; set; }[m
+[32m+[m[32m        public bool Ocuped { get; set; }[m
+         public Position() { }[m
+         public Position(int axeX, int axeY)[m
+         {[m
+             X = axeX;[m
+             Y = axeY;[m
+[32m+[m[32m            Ocuped = true;[m
+         }[m
+[32m+[m		[32mpublic Position(int axeX, int axeY, bool ocuped)[m
+[32m+[m		[32m{[m
+[32m+[m			[32mX = axeX;[m
+[32m+[m			[32mY = axeY;[m
+[32m+[m			[32mOcuped = ocuped;[m
+[32m+[m		[32m}[m
+ [m
+[31m-        /*[m
+[31m-         Line 2[m
+[32m+[m		[32m/*[m
+[32m+[m[41m        [m
+[32m+[m[32m         X == Linha[m
+[32m+[m[32m         Y == Coluna[m
+[32m+[m
+[32m+[m[32m        Line 2[m
+         Colunm 3[m
+ [m
+         Position 19[m
+[36m@@ -35,5 +47,5 @@[m [mnamespace ChessGame.Utilities[m
+         56 57 58 59 60 61 62 63   7[m
+ [m
+          */[m
+[31m-    }[m
+[32m+[m	[32m}[m
+ }[m
+[1mdiff --git a/bin/Debug/net6.0/ChessGame.dll b/bin/Debug/net6.0/ChessGame.dll[m
+[1mindex d2201a0..0bde96a 100644[m
+Binary files a/bin/Debug/net6.0/ChessGame.dll and b/bin/Debug/net6.0/ChessGame.dll differ
+[1mdiff --git a/bin/Debug/net6.0/ChessGame.pdb b/bin/Debug/net6.0/ChessGame.pdb[m
+[1mindex caf200a..522b097 100644[m
+Binary files a/bin/Debug/net6.0/ChessGame.pdb and b/bin/Debug/net6.0/ChessGame.pdb differ
+[1mdiff --git a/obj/Debug/net6.0/ChessGame.csproj.CoreCompileInputs.cache b/obj/Debug/net6.0/ChessGame.csproj.CoreCompileInputs.cache[m
+[1mindex 93c052e..3a48fcb 100644[m
+[1m--- a/obj/Debug/net6.0/ChessGame.csproj.CoreCompileInputs.cache[m
+[1m+++ b/obj/Debug/net6.0/ChessGame.csproj.CoreCompileInputs.cache[m
+[36m@@ -1 +1 @@[m
+[31m-17cc025e56b1bd13bda1615592705f7093563431[m
+[32m+[m[32mba8076d0252b3e1b0f3e00425484a80e109a9f14[m
+[1mdiff --git a/obj/Debug/net6.0/ChessGame.dll b/obj/Debug/net6.0/ChessGame.dll[m
+[1mindex d2201a0..0bde96a 100644[m
+Binary files a/obj/Debug/net6.0/ChessGame.dll and b/obj/Debug/net6.0/ChessGame.dll differ
+[1mdiff --git a/obj/Debug/net6.0/ChessGame.pdb b/obj/Debug/net6.0/ChessGame.pdb[m
+[1mindex caf200a..522b097 100644[m
+Binary files a/obj/Debug/net6.0/ChessGame.pdb and b/obj/Debug/net6.0/ChessGame.pdb differ
+[1mdiff --git a/obj/Debug/net6.0/ref/ChessGame.dll b/obj/Debug/net6.0/ref/ChessGame.dll[m
+[1mindex 8c5b16f..5f31f10 100644[m
+Binary files a/obj/Debug/net6.0/ref/ChessGame.dll and b/obj/Debug/net6.0/ref/ChessGame.dll differ
+[1mdiff --git a/obj/Debug/net6.0/refint/ChessGame.dll b/obj/Debug/net6.0/refint/ChessGame.dll[m
+[1mindex 8c5b16f..5f31f10 100644[m
+Binary files a/obj/Debug/net6.0/refint/ChessGame.dll and b/obj/Debug/net6.0/refint/ChessGame.dll differ

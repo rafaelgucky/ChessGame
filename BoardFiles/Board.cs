@@ -40,6 +40,7 @@ namespace ChessGame.BoardFiles
 		public void RemovePiece(Piece piece)
 		{
 			Pieces[piece.Position.X , piece.Position.Y] = null;
+			Positions[piece.Position.X, piece.Position.Y].Ocuped = false;
 		}
 		public List<Position> UsedPlaces()
 		{

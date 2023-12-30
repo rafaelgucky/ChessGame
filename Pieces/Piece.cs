@@ -17,14 +17,40 @@ namespace ChessGame.Pieces
         public string Symbol {  get; set; }
 
 
-        public Piece(Position position, Color color, string symbol)
+        public Piece(Position position, Color color,Board board, string symbol)
         {
-            position.Ocuped = true;
+			board.Positions[position.X, position.Y].Ocuped = true;
             Position = position;
             Color = color;
             Symbol = symbol;
         }
         public abstract List<Position> GetMove(Board board);
-        public abstract void Move(Position position);
+
+        public void Move(List<Position> listPositions, Position position, Board board)
+        {
+			foreach (Position positionTemp in listPositions)
+			{
+				if (positionTemp.Y == position.Y && positionTemp.X == position.X)
+				{
+					board.Positions[Position.X, Position.Y].Ocuped = false;
+					board.Positions[position.X, position.Y].Ocuped = true;
+
+					foreach (Position position1 in listPositions)
+					{
+						board.Positions[position1.X, position1.Y].IsPossiblePlace = false;
+						board.Positions[position1.X, position1.Y].Killer = false;
+					}
+
+					board.Pieces[Position.X, Position.Y] = null;
+					if(board.Pieces[position.X, position.Y] != null)
+					{
+						//Captured piece
+					}
+					board.Pieces[position.X, position.Y] = this;
+
+					Position = position;
+				}
+			}
+		}
     }
 }

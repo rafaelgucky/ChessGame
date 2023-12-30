@@ -11,12 +11,14 @@ namespace ChessGame.Utilities
         public int X { get; set; }
         public int Y { get; set; }
         public bool Ocuped { get; set; }
+        public bool IsPossiblePlace { get; set; } = false;
+        public bool Killer { get; set; }
+
         public Position() { }
         public Position(int axeX, int axeY)
         {
             X = axeX;
             Y = axeY;
-            Ocuped = true;
         }
 		public Position(int axeX, int axeY, bool ocuped)
 		{
@@ -25,16 +27,29 @@ namespace ChessGame.Utilities
 			Ocuped = ocuped;
 		}
 
-		/*
-        
-         X == Linha
-         Y == Coluna
+		public Position(int axeX, int axeY, bool ocuped, bool isPossiblePlace)
+		{
+			X = axeX;
+			Y = axeY;
+			Ocuped = ocuped;
+            IsPossiblePlace = isPossiblePlace;
+		}
 
-        Line 2
-        Colunm 3
+		public static Position Convert(string entry)
+        {
+            string[] dic = new string[8] {"a", "b", "c", "d", "e", "f", "g", "h"};
 
-        Position 19
+            string result = entry.ToLower().Trim();
 
+            int axeX = int.Parse(result[0].ToString());
+            int axeY = Array.IndexOf(dic, result[1].ToString());
+
+            return new Position(axeX, axeY);
+
+           
+        }
+
+        /*
          0  1  2  3  4  5  6  7
 
          0  1  2  3  4  5  6  7   0

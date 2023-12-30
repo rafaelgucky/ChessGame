@@ -11,7 +11,7 @@ namespace ChessGame.Pieces
 {
 	class Pawn : Piece
 	{
-        public Pawn(Position position, Color color, string symbol) : base(position, color, symbol)
+        public Pawn(Position position, Color color, Board board, string symbol) : base(position, color, board, symbol)
 		{
 			
 		}
@@ -30,6 +30,7 @@ namespace ChessGame.Pieces
 						if(position.Y == Position.Y && position.X < Position.X && position.X >= Position.X - 2)
 						{
 							positions.Add(position);
+							board.Positions[position.X, Position.Y].IsPossiblePlace = true;
 						}
 					}
 					else
@@ -37,16 +38,13 @@ namespace ChessGame.Pieces
 						if (position.Y == Position.Y && position.X > Position.X && position.X <= Position.X + 2)
 						{
 							positions.Add(position);
+							board.Positions[position.X, Position.Y].IsPossiblePlace = true;
 						}
 					}
 				}
 
 			}
 			return positions;
-		}
-		public override void Move(Position position)
-		{
-			
 		}
 	}
 }
