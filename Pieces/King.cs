@@ -36,7 +36,7 @@ namespace ChessGame.Pieces
 						if (board.Pieces[Position.X + x[i], Position.Y + y[i]].Color != Color)
 						{
 							positions.Add(new Position(Position.X + x[i], Position.Y + y[i]));
-							if (onlyVerification) { board.Positions[Position.X + x[i], Position.Y + y[i]].Killer = true; }
+							if (!onlyVerification) { board.Positions[Position.X + x[i], Position.Y + y[i]].Killer = true; }
 						}
 					}
 				}

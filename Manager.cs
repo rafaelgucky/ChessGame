@@ -2,6 +2,7 @@
 using ChessGame.Pieces;
 using ChessGame.Utilities;
 using ChessGame.Enums;
+using ChessGame.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,17 @@ namespace ChessGame
     class Manager
     {
         public bool Ended { get; set; }
+		public Color Color { get; set; }
 
 		private King BlackKing;
 		private King WhiteKing;
 		private Board Board;
+		
 
-		public Manager(Board board)
+		public Manager(Board board, Color color)
         {
 			Board = board;
+			Color = color;
 
 			for (int i = 0; i < 8; i++)
 			{
@@ -62,45 +66,62 @@ namespace ChessGame
 			List<Position> kingMoves;
 			List<Position> pieceMoves;
 
-			int count = 0;
+			King king = WhiteKing;
 
-			kingMoves = WhiteKing.GetMove(Board, true);
+			kingMoves = king.GetMove(Board, true);
 
 			for (int i = 0; i < 2; i++)
 			{
+				int count = kingMoves.Count;
 				foreach (Piece piece in Board.Pieces)
-				{
-					if(piece != null)
+				{	
+					if (piece != null)
 					{
-						pieceMoves = piece.GetMove(Board, true);
-
-						foreach (Position positionKing in kingMoves)
+						if (piece.Color != king.Color)
 						{
-							foreach (Position positionPiece in pieceMoves)
+							pieceMoves = piece.GetMove(Board, true);
+
+							foreach(Position position in pieceMoves)
 							{
-								if (positionKing.X == positionPiece.X && positionKing.Y == positionPiece.Y)
+								foreach(Position position1 in kingMoves)
 								{
-									count++;
-									break;
+									if(position.X == position1.X && position.Y == position1.Y)
+									{
+										count--;
+									}
+								}
+								if(position.X == king.Position.X && position.Y == king.Position.Y)
+								{
+									//CHECK
+									//count--;
 								}
 							}
 						}
-					}
-					
+					}	
 				}
-				Console.WriteLine("Count: " + count + ", KingMoves: " + kingMoves.Count);
-				if(count == kingMoves.Count)
+				//Console.WriteLine("Count: " + count + ", KingMoves: " + kingMoves.Count);
+				if(count < kingMoves.Count && count <= 0)
 				{
 					Ended = true;
 
-					if(i == 0) { return BlackKing; }
-					else { return WhiteKing; }
+					return king;
 				}
 
-				kingMoves = BlackKing.GetMove(Board, true);
+				king = BlackKing;
+				kingMoves = king.GetMove(Board, true);
 			}
 
 			return null;
+		}
+
+		public void RoundVerification(Piece piece)
+		{
+			if(piece.Color != Color)
+			{
+				throw new GameException("The color is wrong!");
+			}
+			if (Color == Color.White) { Color = Color.Black; }
+			else { Color = Color.White; }
 		}
 	}
 }
