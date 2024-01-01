@@ -11,6 +11,7 @@ namespace ChessGame.Pieces
 {
 	class King : Piece
 	{
+		public bool Check {  get; set; }
 		public King(Position position, Color color, Board board, string symbol) : base(position, color, board, symbol)
 		{
 

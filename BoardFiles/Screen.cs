@@ -1,4 +1,5 @@
 ﻿using ChessGame.Pieces;
+using ChessGame.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,7 +73,19 @@ namespace ChessGame.BoardFiles
 		}
 		public static void Victory(Piece piece)
 		{
-			Console.WriteLine("Vistory of " + piece.Color);
+			if(piece.Color == Color.White) { Console.WriteLine("Victory of Black"); }
+			else { Console.WriteLine("Victory of White"); }
+		}
+
+		public static void PrintKingCheck(List<King> kings)
+		{
+			if(kings.Count > 0)
+			{
+				foreach(King king in kings)
+				{
+					Console.WriteLine($"King {king.Color} in check");
+				}
+			}
 		}
 	}
 }

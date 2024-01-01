@@ -90,11 +90,6 @@ namespace ChessGame
 										count--;
 									}
 								}
-								if(position.X == king.Position.X && position.Y == king.Position.Y)
-								{
-									//CHECK
-									//count--;
-								}
 							}
 						}
 					}	
@@ -114,8 +109,41 @@ namespace ChessGame
 			return null;
 		}
 
+		public List<King> GetKingCheck()
+		{
+			List<King> kings = new List<King>();
+
+			foreach (Piece piece in Board.Pieces)
+			{
+				if(piece != null)
+				{
+					List<Position> position = piece.GetMove(Board, true);
+					foreach(Position position1 in position)
+					{
+						if(position1.X == WhiteKing.Position.X && position1.Y == WhiteKing.Position.Y && piece.Color == Color.Black)
+						{
+							kings.Add(WhiteKing);
+						}
+						if(position1.X == BlackKing.Position.X && position1.Y == BlackKing.Position.Y && piece.Color == Color.White)
+						{
+							kings.Add(BlackKing);
+						}
+					}
+				}
+            }
+
+			if (WhiteKing.Check) { kings.Add(WhiteKing); }
+			if(BlackKing.Check ) { kings.Add(BlackKing); }
+
+			return kings;
+		}
+
 		public void RoundVerification(Piece piece)
 		{
+			if(piece == null)
+			{
+				throw new GameException("Invalid position! There isn't a piece in this place.");
+			}
 			if(piece.Color != Color)
 			{
 				throw new GameException("The color is wrong!");

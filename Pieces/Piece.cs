@@ -4,6 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ChessGame.Exceptions;
 using ChessGame.Utilities;
 using ChessGame.Enums;
 using ChessGame.BoardFiles;
@@ -30,6 +31,8 @@ namespace ChessGame.Pieces
 
         public void Move(List<Position> listPositions, Position position, Board board)
         {
+			bool moved = false;
+
 			foreach (Position position2 in board.Positions)
 			{
 				position2.Killer = false;
@@ -53,7 +56,13 @@ namespace ChessGame.Pieces
 					board.Pieces[position.X, position.Y] = this;
 
 					Position = position;
+
+					moved = true;
 				}
+			}
+			if (!moved)
+			{
+				throw new GameException("Invalid position to move the selected piece!");
 			}
 		}
 		public List<Piece> GetCapturesPieces()

@@ -26,28 +26,117 @@ namespace ChessGame.Pieces
 				quantityMoves = 1;
 			}
 
-			foreach(Position position in board.Positions)
+			if(Color == Color.Black)
 			{
-				if (!position.Ocuped)
+				for(int i = 1; i <= quantityMoves; i++)
 				{
-					if(Color == Color.White)
+					Position position;
+					if(i == 1)
 					{
-						if(position.Y == Position.Y && position.X < Position.X && position.X >= Position.X - quantityMoves)
+						if (Position.Y + i <= 7 && Position.X + i <= 7)
 						{
-							positions.Add(position);
-							if (!onlyVerication) { board.Positions[position.X, Position.Y].IsPossiblePlace = true; }
+							position = board.Positions[Position.X + i, Position.Y + i];
+							if (board.Pieces[Position.X + i, Position.Y + i] != null)
+							{
+								if (board.Pieces[Position.X + i, Position.Y + i].Color != Color)
+								{
+									if (!onlyVerication) 
+									{
+										positions.Add(position);
+										position.Killer = true; 
+									}
+								}
+							}
+						}
+						if (Position.Y - i >= 0 && Position.X + i <= 7)
+						{
+							position = board.Positions[Position.X + i, Position.Y - i];
+							if (board.Pieces[Position.X + i, Position.Y - i] != null)
+							{
+								if (board.Pieces[Position.X + i, Position.Y - i].Color != Color)
+								{
+									if (!onlyVerication)
+									{
+										positions.Add(position);
+										position.Killer = true;
+									}
+								}
+							}
 						}
 					}
-					else
+					if (Position.X + i <= 7)
 					{
-						if (position.Y == Position.Y && position.X > Position.X && position.X <= Position.X + quantityMoves)
+						position = board.Positions[Position.X + i, Position.Y];
+						if (!position.Ocuped)
 						{
 							positions.Add(position);
-							if (!onlyVerication) { board.Positions[position.X, Position.Y].IsPossiblePlace = true; }
+							if (!onlyVerication) { position.IsPossiblePlace = true; }
+						}
+						else
+						{
+							positions.Add(position);
+							if (!onlyVerication) { position.Killer = true; }
+							break;
 						}
 					}
 				}
+			}
+			else
+			{
+				for(int i = 1; i <= quantityMoves; i++)
+				{
+					Position position;
 
+					if (i == 1)
+					{
+						if (Position.Y + i <= 7 && Position.X - i >= 0 )
+						{
+							position = board.Positions[Position.X - i, Position.Y + i];
+							if (board.Pieces[Position.X - i, Position.Y + i] != null)
+							{
+								if (board.Pieces[Position.X - i, Position.Y + i].Color != Color)
+								{
+									if (!onlyVerication)
+									{
+										positions.Add(position);
+										position.Killer = true;
+									}
+								}
+							}
+						}
+						if (Position.Y - i >= 0 && Position.X - i >= 0)
+						{
+							position = board.Positions[Position.X - i, Position.Y - i];
+							if (board.Pieces[Position.X - i, Position.Y - i] != null)
+							{
+								if (board.Pieces[Position.X - i, Position.Y - i].Color != Color)
+								{
+									if (!onlyVerication)
+									{
+										positions.Add(position);
+										position.Killer = true;
+									}
+								}
+							}
+						}
+					}
+
+					if (Position.X - i >= 0)
+					{
+						position = board.Positions[Position.X - i, Position.Y];
+						if (!position.Ocuped)
+						{
+							positions.Add(position);
+							if (!onlyVerication) { position.IsPossiblePlace = true; }
+						}
+						else
+						{
+							positions.Add(position);
+							if (!onlyVerication) { position.Killer = true; }
+							break;
+						}
+					}
+				}
 			}
 			return positions;
 		}

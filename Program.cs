@@ -18,9 +18,10 @@ namespace ChessGame
 
 			List<Piece> listPieceWhite = new List<Piece>();
 			List<Piece> listPieceBlack = new List<Piece>();
-			try
+
+			while (!manager.Ended)
 			{
-				while (!manager.Ended)
+				try
 				{
 					Screen.Print(board);
 
@@ -52,17 +53,22 @@ namespace ChessGame
 					listPieceBlack = manager.GetTotalCapturedPieces(Color.Black);
 
 					king = manager.XequeMateVerification();
+
+					List<King> kings = manager.GetKingCheck();
+
+					Screen.PrintKingCheck(kings);
+
 				}
-
-				Screen.Print(board);
-
-				Screen.Victory(king);
-			}
-			catch(GameException e)
-			{
-				Console.WriteLine(e.Message);
+				catch(GameException e)
+				{
+					Console.WriteLine(e.Message);
+					Console.ReadLine();
+				}
 			}
 
+			Screen.Print(board);
+
+			Screen.Victory(king);
 		}
 	}
 }
