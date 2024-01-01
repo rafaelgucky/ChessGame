@@ -123,5 +123,22 @@ namespace ChessGame
 			if (Color == Color.White) { Color = Color.Black; }
 			else { Color = Color.White; }
 		}
+
+		public List<Piece> GetTotalCapturedPieces(Color color)
+		{
+			List<Piece> tempList = new List<Piece>();
+			
+			foreach (Piece piece in Board.Pieces)
+			{
+				if (piece != null)
+				{
+					if (piece.Color == color)
+					{
+						tempList.AddRange(piece.GetCapturesPieces());
+					}
+				}
+			}
+			return tempList;
+		}
 	}
 }

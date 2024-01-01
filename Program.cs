@@ -24,23 +24,10 @@ namespace ChessGame
 				{
 					Screen.Print(board);
 
-					if (listPieceWhite.Count > 0 || listPieceBlack.Count > 0)
-					{
-						Console.Write("White captured pieces: ");
-						foreach (Piece piece in listPieceWhite)
-						{
-							Console.Write(piece.Symbol + " ");
-						}
-						Console.WriteLine();
-						Console.Write("Black captured pieces: ");
-						foreach (Piece piece in listPieceBlack)
-						{
-							Console.Write(piece.Symbol + " ");
-						}
-					}
+					Screen.PrintCapturedPieces(listPieceWhite, listPieceBlack);
 
-					listPieceWhite = new List<Piece>();
-					listPieceBlack = new List<Piece>();
+					listPieceWhite.Clear();
+					listPieceBlack.Clear();
 
 					List<Position> positions;
 					Console.WriteLine();
@@ -61,29 +48,15 @@ namespace ChessGame
 
 					Console.WriteLine();
 
-					foreach (Piece piece in board.Pieces)
-					{
-						if (piece != null)
-						{
-							if (piece.Color == Color.White)
-							{
-								listPieceWhite.AddRange(piece.GetCapturesPieces());
-							}
-							else
-							{
-								listPieceBlack.AddRange(piece.GetCapturesPieces());
-							}
-						}
-					}
+					listPieceWhite = manager.GetTotalCapturedPieces(Color.White);
+					listPieceBlack = manager.GetTotalCapturedPieces(Color.Black);
 
 					king = manager.XequeMateVerification();
-					//Console.ReadLine();
 				}
 
 				Screen.Print(board);
 
-				if (king.Color == Color.White) { Console.WriteLine("Victory of Black"); }
-				else { Console.WriteLine("Victory of White"); }
+				Screen.Victory(king);
 			}
 			catch(GameException e)
 			{

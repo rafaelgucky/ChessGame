@@ -53,5 +53,26 @@ namespace ChessGame.BoardFiles
 			}
 			Console.WriteLine("   A  B  C  D  E  F  G  H");
 		}
+		public static void PrintCapturedPieces(List<Piece> listPieceWhite, List<Piece> listPieceBlack)
+		{
+			if (listPieceWhite.Count > 0 || listPieceBlack.Count > 0)
+			{
+				Console.Write("White's captured pieces: ");
+				foreach (Piece piece in listPieceWhite)
+				{
+					Console.Write(piece.Symbol + " ");
+				}
+				Console.WriteLine();
+				Console.Write("Black's captured pieces: ");
+				foreach (Piece piece in listPieceBlack)
+				{
+					Console.Write(piece.Symbol + " ");
+				}
+			}
+		}
+		public static void Victory(Piece piece)
+		{
+			Console.WriteLine("Vistory of " + piece.Color);
+		}
 	}
 }
